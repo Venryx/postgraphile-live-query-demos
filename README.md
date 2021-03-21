@@ -31,9 +31,11 @@ max_replication_slots = 10
 
 2) Start the demo's client/webpage, by navigating your browser to: http://localhost:2345
 
-## Todo App demo
+## Variants
 
-Simple todo application, letting the user create, edit, reorder, and delete todo entries.
+Part of the reason I created these demos was to make it easy to compare the code clarity, performance, ease of installation, etc. of the various client libraries (eg. Apollo vanilla vs extended) and change-stream protocols (full resends vs json-patches).
+
+To enable this comparison, I've created "variants" of the server and client code. Your selected server variant determines which "change-stream protocol" is used (the client code detects which server variant is active, and adjusts its receiving of the change-stream data accordingly). Your selected client variant determines how that data is utilized within the app once it's received.
 
 ### Server variants
 
@@ -62,3 +64,7 @@ Apollo + MobX Graphlink ([entry point](/Demos/TodoApp/Client/Variants/Apollo_Mob
 > **Pro:** Uses a layer-2 library ([mobx-graphlink](https://github.com/Venryx/mobx-graphlink)) which runs on top of Apollo, and provides a streamlined and highly-composable way to access, cache, and receive change-feed updates for database contents.  
 > **Con:** The library's design philosophy is highly opinionated, and uses [MobX](https://github.com/mobxjs/mobx) as its client-side update-propagation mechanism. This accelerates development for people who agree with its approach, but will be confusing to developers unfamiliar with its "deeply-nested accessor" system.  
 > **Con:** The library's documentation is severely lacking at the moment.
+
+## Todo App demo
+
+Simple todo application, letting the user create, edit, reorder, and delete todo entries.
