@@ -29,7 +29,6 @@ max_replication_slots = 10
 
 9) Start the demo client/webpage, by navigating your browser to: http://localhost:2345
 
-
 ## Todo App demo
 
 Simple todo application, letting the user create, edit, reorder, and delete todo entries.
