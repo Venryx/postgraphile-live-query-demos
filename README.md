@@ -59,6 +59,6 @@ Apollo, vanilla ([entry point](/Demos/TodoApp/Client/Variants/Apollo_Base.ts))
 
 Apollo + MobX Graphlink ([entry point](/Demos/TodoApp/Client/Variants/Apollo_MobXGraphlink.ts))
 
-> **Pro:** Uses a layer-2 library which runs on top of Apollo, and provides a streamlined and highly-composable way to access, cache, and receive change-feed updates for database contents.  
+> **Pro:** Uses a layer-2 library ([mobx-graphlink](https://github.com/Venryx/mobx-graphlink)) which runs on top of Apollo, and provides a streamlined and highly-composable way to access, cache, and receive change-feed updates for database contents.  
 > **Con:** The library's design philosophy is highly opinionated, and uses [MobX](https://github.com/mobxjs/mobx) as its client-side update-propagation mechanism. This accelerates development for people who agree with its approach, but will be confusing to developers unfamiliar with its "deeply-nested accessor" system.  
 > **Con:** The library's documentation is severely lacking at the moment.
