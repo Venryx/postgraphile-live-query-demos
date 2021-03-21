@@ -41,7 +41,7 @@ Base ([entry point](/Demos/TodoApp/Server/Variants/Base.ts))
 
 > Uses Postgraphile's official [subscription-lds](https://github.com/graphile/graphile-engine/tree/v4/packages/subscriptions-lds) plugin to send change-stream updates to the client.
 >
-> **Pro:** Works with any client that supports subscriptions.  
+> **Pro:** Works with any client that supports subscriptions, without plugins.  
 > **Con:** High overhead for change-feed updates, because the entire result set is resent each time.
 
 With JSON patches ([entry point](/Demos/TodoApp/Server/Variants/WithJSONPatches.ts))
