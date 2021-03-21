@@ -27,7 +27,7 @@ max_replication_slots = 10
 
 ## Running
 
-1) Start the demo's server by running: `npm start server.[base/patches]` (replace brackets with server choice)
+1) Start the demo's server by running: `npm start server.[base/patches]` (replace bracket-text with server choice)
 
 2) Start the demo client/webpage, by navigating your browser to: http://localhost:2345
 
