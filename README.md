@@ -68,3 +68,6 @@ Apollo + MobX Graphlink ([entry point](/Demos/TodoApp/Client/Variants/Apollo_Mob
 ## Todo App demo
 
 Simple todo application, letting the user create, edit, reorder, and delete todo entries.
+
+**Server variants supported:** Base, JSON Patches  
+**Client variants supported:** Apollo, Apollo + MobX Graphlink
