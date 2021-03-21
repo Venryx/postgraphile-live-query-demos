@@ -29,7 +29,7 @@ max_replication_slots = 10
 
 1) Start the demo's server by running: `npm start server.[base/patches]` (replace bracket-text with server choice)
 
-2) Start the demo client/webpage, by navigating your browser to: http://localhost:2345
+2) Start the demo's client/webpage, by navigating your browser to: http://localhost:2345
 
 ## Todo App demo
 
