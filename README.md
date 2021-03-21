@@ -25,9 +25,11 @@ max_replication_slots = 10
 
 7) Create a Postgres database for this project, by running: `createdb lq-demos`
 
-8) Start the demo's server by running: `npm start server.[base/patches]` (replace brackets with server choice)
+## Running
 
-9) Start the demo client/webpage, by navigating your browser to: http://localhost:2345
+1) Start the demo's server by running: `npm start server.[base/patches]` (replace brackets with server choice)
+
+2) Start the demo client/webpage, by navigating your browser to: http://localhost:2345
 
 ## Todo App demo
 
