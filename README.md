@@ -10,7 +10,7 @@ Simple todo application, letting the user create, edit, reorder, and delete todo
 
 Base ([entry point](/Demos/TodoApp/Server/Variants/Base.ts))
 
-> Uses Postgraphile's official "subscription-lds" plugin to send change-stream updates to the client.
+> Uses Postgraphile's official [subscription-lds](https://github.com/graphile/graphile-engine/tree/v4/packages/subscriptions-lds) plugin to send change-stream updates to the client.
 >
 > **Pro:** Works with any client that supports subscriptions.  
 > **Con:** High overhead for change-feed updates, because the entire result set is resent each time.
