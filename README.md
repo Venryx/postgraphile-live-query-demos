@@ -2,6 +2,34 @@
 
 Demos showing how to implement live-queries in PostGraphile, using various client libraries and change-stream protocols.
 
+## Installation
+
+1) Ensure PostgreSQL is installed.
+
+2) Ensure your PostgreSQL server [has logical decoding enabled](https://www.graphile.org/postgraphile/live-queries/#graphilesubscriptions-lds), by ensuring the following settings are set in `postgresql.conf` (and then
+restarting PostgreSQL):
+```
+wal_level = logical
+max_wal_senders = 10
+max_replication_slots = 10
+```
+(Note: you can determine where your `postgresql.conf` file is by running `psql template1 -c 'SHOW config_file'`)
+
+3) Ensure the `wal2json` PostgreSQL plugin is installed: https://github.com/eulerto/wal2json#build-and-install
+
+4) Ensure NodeJS is installed (v8.6+).
+
+5) Clone/download this repo to disk. (https://github.com/graphile/livesotope.git)
+
+6) Install this repo's dependencies by running: `npm install`
+
+7) Create a Postgres database for this project, by running: `createdb lq-demos`
+
+8) Start the demo's server by running: `npm start server.[base/patches]` (replace brackets with server choice)
+
+9) Start the demo client/webpage, by navigating your browser to: http://localhost:2345
+
+
 ## Todo App demo
 
 Simple todo application, letting the user create, edit, reorder, and delete todo entries.
