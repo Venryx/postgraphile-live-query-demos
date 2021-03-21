@@ -4,7 +4,7 @@ Demos showing how to implement live-queries in PostGraphile, using various clien
 
 ## Installation
 
-1) Ensure PostgreSQL is installed.
+1) Ensure [PostgreSQL](https://www.postgresql.org/) (v10+) is installed.
 
 2) Ensure your PostgreSQL server [has logical decoding enabled](https://www.graphile.org/postgraphile/live-queries/#graphilesubscriptions-lds), by ensuring the following settings are set in `postgresql.conf` (and then
 restarting PostgreSQL):
@@ -17,7 +17,7 @@ max_replication_slots = 10
 
 3) Ensure the `wal2json` PostgreSQL plugin is installed: https://github.com/eulerto/wal2json#build-and-install
 
-4) Ensure NodeJS is installed (v8.6+).
+4) Ensure [NodeJS](https://nodejs.org) (v8.6+) is installed.
 
 5) Clone/download this repo to disk. (https://github.com/Venryx/postgraphile-live-query-demos.git)
 
