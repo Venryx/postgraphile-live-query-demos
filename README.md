@@ -2,13 +2,11 @@
 
 Demos showing how to implement live-queries in PostGraphile, using various client libraries and change-stream protocols.
 
-## Demos
-
-### Todo app
+## Todo App demo
 
 Simple todo application, letting the user create, edit, reorder, and delete todo entries.
 
-#### Server variants
+### Server variants
 
 Base ([entry point](/Demos/TodoApp/Server/Variants/Base.ts))
 
@@ -24,7 +22,7 @@ With JSON patches ([entry point](/Demos/TodoApp/Server/Variants/WithJSONPatches.
 > Pro: Low overhead for change-feed updates, because only the delta for the result-set is sent each time.  
 > Con: Requires adding plugins to both the server and client code, for the deltas to be generated and applied.
 
-#### Client variants
+### Client variants
 
 Apollo, vanilla ([entry point](/Demos/TodoApp/Client/Variants/Apollo_Base.ts))
 
