@@ -19,7 +19,7 @@ max_replication_slots = 10
 
 4) Ensure NodeJS is installed (v8.6+).
 
-5) Clone/download this repo to disk. (https://github.com/graphile/livesotope.git)
+5) Clone/download this repo to disk. (https://github.com/Venryx/postgraphile-live-query-demos.git)
 
 6) Install this repo's dependencies by running: `npm install`
 
