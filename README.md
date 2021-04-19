@@ -6,8 +6,7 @@ Demos showing how to implement live-queries in PostGraphile, using various clien
 
 1) Ensure [PostgreSQL](https://www.postgresql.org/) (v10+) is installed.
 
-2) Ensure your PostgreSQL server [has logical decoding enabled](https://www.graphile.org/postgraphile/live-queries/#graphilesubscriptions-lds), by ensuring the following settings are set in `postgresql.conf` (and then
-restarting PostgreSQL):
+2) Ensure your PostgreSQL server [has logical decoding enabled](https://www.graphile.org/postgraphile/live-queries/#graphilesubscriptions-lds), by ensuring the following settings are set in `postgresql.conf` (and then restarting PostgreSQL):
 ```
 wal_level = logical
 max_wal_senders = 10
@@ -27,7 +26,7 @@ max_replication_slots = 10
 
 ## Running
 
-1) Start the demo's server by running: `npm start server.[base/patches]` (replace bracket-text with server choice)
+1) Start the demo's server by running: `npm start server.[todo].[base/patches]` (replace bracket-texts with choice of: demo app, server variant)
 
 2) Start the demo's client/webpage, by navigating your browser to: http://localhost:2345
 
