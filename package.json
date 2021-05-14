@@ -12,6 +12,8 @@
     "start": "nps"
   },
   "devDependencies": {
-    "nps": "^5.10.0"
+    "concurrently": "^6.1.0",
+    "nps": "^5.10.0",
+    "snowpack": "^3.4.0"
   }
 }

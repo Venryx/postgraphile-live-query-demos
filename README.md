@@ -26,9 +26,11 @@ max_replication_slots = 10
 
 ## Running
 
-1) Start the demo's server by running: `npm start server.[todo].[base/patches]` (replace bracket-texts with choice of: demo app, server variant)
+1) Start the demo's frontend-dev-server and backend-build-watcher by running: `npm start dev`
 
-2) Start the demo's client/webpage, by navigating your browser to: http://localhost:2345
+2) Start the demo's client/webpage, by navigating your browser to: http://localhost:8080
+
+3) Start the server, by running: `npm start server.[todo].[base/patches] (replace bracket-texts with choice of server variant)
 
 ## Variants
 
