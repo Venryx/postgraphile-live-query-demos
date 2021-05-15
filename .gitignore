@@ -1,3 +1,5 @@
 /node_modules
+# created by snowpack
+/Server/node_modules
 /Server/Build
 /.nsi.json

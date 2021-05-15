@@ -24,13 +24,19 @@ max_replication_slots = 10
 
 7) Create a Postgres database for this project, by running: `createdb lq-demos`
 
+8) Init `lq-demos` db in PostgreSQL, by running `npm start initDB`.
+
+9) Set environment variables for the database's username (PGUSER) and password (PGPASSWORD).
+
 ## Running
 
-1) Start the demo's frontend-dev-server and backend-build-watcher by running: `npm start dev`
+1) Ensure the PostgreSQL server is running. (eg. start pgAdmin, which is installed with PostgreSQL)
 
-2) Start the demo's client/webpage, by navigating your browser to: http://localhost:8080
+2) Start the demo's frontend-dev-server and backend-build-watcher by running: `npm start dev`
 
-3) Start the server, by running: `npm start server.[todo].[base/patches]` (replace bracket-texts with choice of server variant)
+3) Start the demo's client/webpage, by navigating your browser to: http://localhost:8080
+
+4) Start the server, by running: `npm start server.[todo].[base/patches]` (replace bracket-texts with choice of server variant)
 
 ## Variants
 

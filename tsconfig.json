@@ -8,18 +8,18 @@
 		"forceConsistentCasingInFileNames": true, // creates duplicates in import-helper plugins otherwise
 
 		// modules/paths
-		"module": "es2015",
+		"module": "esnext",
 		"moduleResolution": "node",
 		"rootDir": ".",
 		//"rootDir": "Source",
 		//"baseUrl": ".", // commented; no absolute paths (snowpack issues)
 		//"baseUrl": "Source",
-		"paths": { // ("paths" is relative to "baseUrl")
+		/*"paths": { // ("paths" is relative to "baseUrl")
 			"*": [
 				"../node_modules/*", // prefer "/node_modules/X" over "/node_modules/[something]/node_modules/X" (eg, when using npm link)
 				"*"
 			],
-		},
+		},*/
 
 		// compiler options
 		"target": "esnext",

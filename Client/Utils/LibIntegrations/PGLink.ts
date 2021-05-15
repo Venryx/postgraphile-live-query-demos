@@ -4,7 +4,7 @@ import {getMainDefinition} from "@apollo/client/utilities";
 import {onError} from "@apollo/client/link/error";
 import {GetTypePolicyFieldsMappingSingleDocQueriesToCache} from "mobx-graphlink";
 
-const GRAPHQL_URL = "http://localhost:3109/graphql";
+const GRAPHQL_URL = "http://localhost:2101/graphql";
 
 let httpLink: HttpLink;
 let wsLink: WebSocketLink;

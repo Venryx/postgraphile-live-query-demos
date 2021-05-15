@@ -1,10 +1,17 @@
+import {builtinModules} from "module";
+
 // Snowpack Configuration File
 // See all supported options: https://www.snowpack.dev/reference/configuration
 
 const forProd = process.env.NODE_ENV == "production";
 
+import path from 'path';
+const __dirname = path.join(path.dirname(decodeURI(new URL(import.meta.url).pathname))).replace(/^\\([A-Z]:\\)/, "$1");
+
+//console.log("hi:", require("module").builtinModules);
+
 /** @type {import("snowpack").SnowpackUserConfig } */
-module.exports = {
+export default {
   //root: "src",
   /*mount: {
     "./": {url: "/"},
@@ -15,17 +22,18 @@ module.exports = {
     `./*.json`,
     `./*.js`
   ].map(a=>a.replace("./", __dirname.replace(/\\/g, "/") + "/")),
-  workspaceRoot: process.env.NPM_LINK_ROOT, // needed so that same-version changes to linked-module files aren't ignored (both for dev-server and prod-builds)
+  workspaceRoot: process.env.NPM_LINK_ROOT, // needed so that same-version changes to linked-module files aren"t ignored (both for dev-server and prod-builds)
   plugins: [
     /*[
-      '@snowpack/plugin-webpack',
+      "@snowpack/plugin-webpack",
       {
         outputPattern: {css: "../../Build/webpack/css/[name].[contenthash].css", js: "../../Build/webpack/js/[name].[contenthash].js", assets: "../../Build/webpack/assets/[name].[contenthash].[ext]"}
       },
     ],*/
   ],
   packageOptions: {
-    external: forProd ? ['react-vextensions', 'react-vcomponents'] : []
+    //external: require("module").builtinModules.concat(forProd ? ["react-vextensions", "react-vcomponents"] : []),
+    external: builtinModules.concat("express", "postgraphile", "commander"),
   },
   devOptions: {
     open: "none",
