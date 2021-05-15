@@ -46,14 +46,14 @@ To enable this comparison, I've created "variants" of the server and client code
 
 ### Server variants
 
-Base ([entry point](/Demos/TodoApp/Server/Variants/Base.ts))
+Base
 
 > Uses Postgraphile's official [subscription-lds](https://github.com/graphile/graphile-engine/tree/v4/packages/subscriptions-lds) plugin to send change-stream updates to the client.
 >
 > **Pro:** Works with any client that supports subscriptions, without plugins.  
 > **Con:** High overhead for change-feed updates, because the entire result set is resent each time.
 
-With JSON patches ([entry point](/Demos/TodoApp/Server/Variants/WithJSONPatches.ts)) \[TODO\]
+With JSON patches \[TODO\]
 
 > Uses the [graphql-live-query](https://github.com/n1ru4l/graphql-live-query) libraries (with a Postgraphile plugin around it) to send change-stream updates to the client.
 >
@@ -62,11 +62,11 @@ With JSON patches ([entry point](/Demos/TodoApp/Server/Variants/WithJSONPatches.
 
 ### Client variants
 
-Apollo, vanilla ([entry point](/Demos/TodoApp/Client/Variants/Apollo_Base.ts))
+Apollo, vanilla
 
 > **Pro:** Uses the standard API of a popular GraphQL client library, easing the learning curve.   
 
-Apollo + MobX Graphlink ([entry point](/Demos/TodoApp/Client/Variants/Apollo_MobXGraphlink.ts)) \[TODO\]
+Apollo + MobX Graphlink \[TODO\]
 
 > **Pro:** Uses a layer-2 library ([mobx-graphlink](https://github.com/Venryx/mobx-graphlink)) which runs on top of Apollo, and provides a streamlined and highly-composable way to access, cache, and receive change-feed updates for database contents.  
 > **Con:** The library's design philosophy is highly opinionated, and uses [MobX](https://github.com/mobxjs/mobx) as its client-side update-propagation mechanism. This accelerates development for people who agree with its approach, but will be confusing to developers unfamiliar with its "deeply-nested accessor" system.  
