@@ -2,19 +2,27 @@ import {Observer} from "../Utils/UI/MobX";
 import React from "react";
 import {Row} from "../Utils/ReactComponents/Row";
 import {Column} from "../Utils/ReactComponents/Column";
+import {TodoList} from "./Todo/TodoList";
+import {ApolloProvider} from "@apollo/client";
+import {InitPGLink, pgClient} from "../Utils/LibIntegrations/PGLink";
 
 @Observer
 export class RootUI extends React.Component<{}, {}> {
+	UNSAFE_componentWillMount() {
+		InitPGLink(); // only 1 variant atm, so init right away
+	}
 	render() {
 		//const {page} = store.main;
 		const page = "home";
 		return (
-			<Row className="background"/*"unselectable"*/ style={{height: "100%"}}>
-				{/*<InfoButton_TooltipWrapper/>*/}
-				<main style={{position: "relative", flex: 1, overflow: "hidden", display: "flex", justifyContent: "center", alignItems: "flex-start"}}>
-					{page == "home" && <HomeUI/>}
-				</main>
-			</Row>
+			<ApolloProvider client={pgClient}>
+				<Row className="background"/*"unselectable"*/ style={{height: "100%"}}>
+					{/*<InfoButton_TooltipWrapper/>*/}
+					<main style={{position: "relative", flex: 1, overflow: "hidden", display: "flex", justifyContent: "center", alignItems: "flex-start"}}>
+						{page == "home" && <HomeUI/>}
+					</main>
+				</Row>
+			</ApolloProvider>
 		);
 	}
 }
@@ -34,7 +42,7 @@ class HomeUI extends React.Component<{}, {}> {
 	render() {
 		return (
 			<Column>
-				Hello World!
+				<TodoList/>
 			</Column>
 		);
 	}
