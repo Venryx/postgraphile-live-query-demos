@@ -1,0 +1,50 @@
+{
+	"compilerOptions": {
+		// general
+		"sourceMap": true,
+		"watch": true,
+		//"outDir": "Source_JS",
+		"noEmit": true,
+		"forceConsistentCasingInFileNames": true, // creates duplicates in import-helper plugins otherwise
+
+		// modules/paths
+		"module": "es2015",
+		"moduleResolution": "node",
+		"rootDir": ".",
+		//"rootDir": "Source",
+		//"baseUrl": ".", // commented; no absolute paths (snowpack issues)
+		//"baseUrl": "Source",
+		"paths": { // ("paths" is relative to "baseUrl")
+			"*": [
+				"../node_modules/*", // prefer "/node_modules/X" over "/node_modules/[something]/node_modules/X" (eg, when using npm link)
+				"*"
+			],
+		},
+
+		// compiler options
+		"target": "esnext",
+		"lib": [
+			"es6",
+			"es5",
+			"dom"
+		],
+		"jsx": "react",
+		"noImplicitAny": false,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"files": ["Client/index.tsx"],
+	"include": [
+		"Typings/**/*.d.ts",
+		"Client/**/*.ts",
+		"Client/**/*.tsx",
+		"Server/**/*.ts",
+		"Server/**/*.tsx",
+	],
+	"exclude": [
+		"Build",
+		"Tests",
+		"node_modules",
+	],
+	"compileOnSave": true
+}

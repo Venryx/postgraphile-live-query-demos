@@ -15,5 +15,16 @@
     "concurrently": "^6.1.0",
     "nps": "^5.10.0",
     "snowpack": "^3.4.0"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.18",
+    "@types/react": "^17.0.5",
+    "graphql": "^15.5.0",
+    "mobx": "^6.3.0",
+    "mobx-graphlink": "0.0.1",
+    "mobx-react": "^7.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "subscriptions-transport-ws": "^0.9.18"
   }
 }
