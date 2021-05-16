@@ -55,7 +55,7 @@ Base
 > **Pro:** Works with any client that supports subscriptions, without plugins.  
 > **Con:** High overhead for change-feed updates, because the entire result set is resent each time.
 
-With JSON patches \[TODO\]
+With JSON patches
 
 > Uses the [graphql-live-query](https://github.com/n1ru4l/graphql-live-query) libraries (with a Postgraphile plugin around it) to send change-stream updates to the client.
 >
