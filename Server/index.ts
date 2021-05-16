@@ -3,6 +3,7 @@ const {program} = commander;
 import express from "express";
 import postgraphile_ from "postgraphile";
 const postgraphile = postgraphile_["postgraphile"] as typeof postgraphile_;
+import LQHelper from "./Utils/LQHelper";
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
@@ -12,6 +13,7 @@ program
 
 program.parse(process.argv);
 export const launchOpts = program.opts();
+export const variant = launchOpts.variant;
 
 //if (launchOpts.variant == "base") {
 
@@ -32,6 +34,7 @@ app.use(
 				require("@graphile-contrib/pg-simplify-inflector"),
 				require("@graphile/subscriptions-lds").default,
 				require("postgraphile-plugin-connection-filter"),
+				variant == "patches" && LQHelper,
 			],
 			dynamicJson: true,
 			live: true,

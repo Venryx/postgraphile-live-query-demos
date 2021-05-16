@@ -34,6 +34,8 @@ max_replication_slots = 10
 
 2) Start the demo's frontend-dev-server and backend-build-watcher by running: `npm start dev`
 
+2.1) Currently, snowpack has compile issue. Fix by, after first compile, opening `Server/Build/esm/_snowpack/pkg/...live-query-patch...js`, and fixing the import for `fast-json-patch`. (make it a relative import)
+
 3) Start the backend/server, by running: `npm start server.[todo].[base/patches]` (replace bracket-texts with choice of server variant)
 
 4) Start the frontend/webpage, by navigating your browser to: http://localhost:8080

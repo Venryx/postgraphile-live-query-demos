@@ -35,7 +35,11 @@ const config = {
 	],
 	packageOptions: {
 		//external: require("module").builtinModules.concat(forProd ? ["react-vextensions", "react-vcomponents"] : []),
-		external: builtinModules.concat("express", "postgraphile", "commander"),
+		knownEntrypoints: [
+			// for packages that snowpack's auto-scanner misses // this seems to not work atm
+			"fast-json-patch",
+		],
+		external: builtinModules.concat("express", "postgraphile", "commander", "graphile-utils"),
 	},
 	devOptions: {
 		open: "none",
