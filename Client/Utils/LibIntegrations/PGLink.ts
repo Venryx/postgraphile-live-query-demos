@@ -5,7 +5,6 @@ import {getMainDefinition} from "@apollo/client/utilities";
 import {createApplyLiveQueryPatch} from "@n1ru4l/graphql-live-query-patch";
 import {print} from "graphql";
 import {GetTypePolicyFieldsMappingSingleDocQueriesToCache} from "mobx-graphlink";
-//import { applyAsyncIterableIteratorToSink } from "@n1ru4l/push-pull-async-iterable-iterator";
 import { SubscriptionServer } from "subscriptions-transport-ws";
 
 const GRAPHQL_URL = "http://localhost:2101/graphql";
@@ -67,9 +66,6 @@ class CustomApolloLink extends ApolloLink {
 	baseLink: ApolloLink;
 
 	public request(operation: Operation): Observable<FetchResult> | null {
-		/*const definition = getMainDefinition(operation.query);
-		const isSubscription = definition.kind === "OperationDefinition" && definition.operation === "subscription";*/
-
 		const applyLiveQueryPatch = createApplyLiveQueryPatch();
 		const queue = [];
 		const iter: AsyncIterableIterator<Record<string, unknown>> = {
@@ -83,24 +79,11 @@ class CustomApolloLink extends ApolloLink {
 		const applyIter = applyLiveQueryPatch(iter);
 		
 		return new Observable<FetchResult>(sink=>{
-			/*const result = this.baseLink.request({
-				operationName: operation.operationName,
-				operation: print(operation.query),
-				variables: operation.variables,
-			});*/
 			const baseObservable = this.baseLink.request(operation);
 			let subresultsReceived = 0;
 			baseObservable.subscribe(async subresult=>{
 				subresultsReceived++;
-				//console.log(`Subresult(${subresultsReceived}):`, subresult);
 
-				/*if (subresultsReceived == 1) {
-					sink.next(subresult);
-					sink["lastResult"] = subresult;
-				} else {
-					applyLiveQueryPatch()
-				}*/
-				
 				queue.length = 0;
 				queue[0] = subresult;
 				const nextSubresultOut = (await applyIter.next()).value;
@@ -108,8 +91,6 @@ class CustomApolloLink extends ApolloLink {
 
 				console.log(`Subresult(${subresultsReceived}):`, subresult, "SubresultOut:", nextSubresultOut);
 			});
-			/*const result_patched = applyLiveQueryPatch(result);
-			return applyAsyncIterableIteratorToSink(result, sink);*/
 		});
 	}
 }
