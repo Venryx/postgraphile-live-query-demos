@@ -34,11 +34,11 @@ app.use(
 				require("@graphile-contrib/pg-simplify-inflector"),
 				require("@graphile/subscriptions-lds").default,
 				require("postgraphile-plugin-connection-filter"),
-				variant == "patches" && LQHelper_Plugin,
+				//variant == "patches" && LQHelper_Plugin,
 			],
 			dynamicJson: true,
 			live: true,
-			subscribeFunc: LQHelper_liveSubscribe,
+			subscribeFunc: variant == "patches" ? LQHelper_liveSubscribe : null,
 			ownerConnectionString: dbURL, // passed in a 2nd time, for live-query module (connection-string with elevated privileges)
 			enableCors: true, // cors flag temporary; enables mutations, from any origin
 			showErrorStack: true,

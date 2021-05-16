@@ -9,8 +9,8 @@ const {createLiveQueryPatchGenerator, createApplyLiveQueryPatchGenerator} = grap
 import mapAsyncIterator_ from "postgraphile/build/postgraphile/http/mapAsyncIterator.js";
 const mapAsyncIterator = mapAsyncIterator_["default"];
 
-export function LQHelper_Plugin(builder) {
-}
+/*export function LQHelper_Plugin(builder) {
+}*/
 
 const isAsyncIterable = (value: unknown): value is AsyncIterable<unknown> => {
 	return (
