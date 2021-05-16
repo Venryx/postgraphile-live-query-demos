@@ -55,8 +55,8 @@ export function TodoList() {
 	const entries = data1?.todoEntries?.nodes ?? [];
 	return (
 		<Column style={{width: 300}}>
-			<Row>
-				<input type="text" value={newEntryText} onChange={e=>{
+			<Row style={{marginBottom: 5}}>
+				<input type="text" style={{flex: 1}} value={newEntryText} onChange={e=>{
 					setNewEntryText(e.target.value);
 				}}/>
 				<button onClick={()=>{
