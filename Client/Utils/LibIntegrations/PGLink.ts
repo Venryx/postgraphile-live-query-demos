@@ -71,15 +71,45 @@ class CustomApolloLink extends ApolloLink {
 		const isSubscription = definition.kind === "OperationDefinition" && definition.operation === "subscription";*/
 
 		const applyLiveQueryPatch = createApplyLiveQueryPatch();
-		return new Observable<FetchResult>((sink) =>{
+		const queue = [];
+		const iter: AsyncIterableIterator<Record<string, unknown>> = {
+			async* [Symbol.asyncIterator]() {
+				while (true) {
+					yield queue[0];
+				}
+		 	},
+			next() { return queue[0]; }
+		};
+		const applyIter = applyLiveQueryPatch(iter);
+		
+		return new Observable<FetchResult>(sink=>{
 			/*const result = this.baseLink.request({
 				operationName: operation.operationName,
 				operation: print(operation.query),
 				variables: operation.variables,
 			});*/
-			const result = this.baseLink.request(operation);
-			const result_patched = applyLiveQueryPatch(result);
-			return applyAsyncIterableIteratorToSink(result, sink);
+			const baseObservable = this.baseLink.request(operation);
+			let subresultsReceived = 0;
+			baseObservable.subscribe(async subresult=>{
+				subresultsReceived++;
+				//console.log(`Subresult(${subresultsReceived}):`, subresult);
+
+				/*if (subresultsReceived == 1) {
+					sink.next(subresult);
+					sink["lastResult"] = subresult;
+				} else {
+					applyLiveQueryPatch()
+				}*/
+				
+				queue.length = 0;
+				queue[0] = subresult;
+				const nextSubresultOut = (await applyIter.next()).value;
+				sink.next(nextSubresultOut);
+
+				console.log(`Subresult(${subresultsReceived}):`, subresult, "SubresultOut:", nextSubresultOut);
+			});
+			/*const result_patched = applyLiveQueryPatch(result);
+			return applyAsyncIterableIteratorToSink(result, sink);*/
 		});
 	}
 }
