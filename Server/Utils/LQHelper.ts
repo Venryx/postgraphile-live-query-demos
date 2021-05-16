@@ -20,7 +20,8 @@ export default function(builder) {
 		const {pgSql: sql} = build;
 		const { scope: { isRootQuery, isRootSubscription, fieldName }, addArgDataGenerator } = context;
 
-		const isMatch = (isRootQuery || isRootSubscription) && fieldName == "todoEntries"
+		//const isMatch = (isRootQuery || isRootSubscription) && fieldName == "todoEntries"
+		const isMatch = isRootSubscription && fieldName == "todoEntries";
 		if (!isMatch) {
 			// The 'GraphQLObjectType:fields:field' hook runs for every field on
 			// every object type in the schema. If it's not a field in the root
