@@ -63,15 +63,7 @@ function liveSubscribeImpl(
 	fieldResolver?: GraphQLFieldResolver<any, any>,
 	subscribeFieldResolver?: GraphQLFieldResolver<any, any>,
 ) {
-	const sourcePromise = createSourceEventStream(
-		schema,
-		document,
-		rootValue,
-		contextValue,
-		variableValues,
-		operationName,
-		subscribeFieldResolver,
-	);
+	const sourcePromise = createSourceEventStream(schema, document, rootValue, contextValue, variableValues, operationName, subscribeFieldResolver);
 
 	// For each payload yielded from a subscription, map it over the normal
 	// GraphQL `execute` function, with `payload` as the rootValue.
@@ -88,15 +80,7 @@ function liveSubscribeImpl(
 		 * that it can clean up old listeners; we do this with the `finally` block.
 		 */
 		try {
-			let result = execute(
-				schema,
-				document,
-				payload,
-				contextValue,
-				variableValues,
-				operationName,
-				fieldResolver,
-			);
+			let result = execute(schema, document, payload, contextValue, variableValues, operationName, fieldResolver);
 
 			/*console.log("==========");
 			for (let obj of [schema, document, rootValue, contextValue, variableValues, operationName, subscribeFieldResolver]) {
@@ -155,24 +139,8 @@ function liveSubscribeImpl(
 	);
 }
 
-export function LQHelper_execute(
-	schema,
-	document,
-	payload,
-	contextValue,
-	variableValues,
-	operationName,
-	fieldResolver
-) {
-	let result = execute(
-		schema,
-		document,
-		payload,
-		contextValue,
-		variableValues,
-		operationName,
-		fieldResolver,
-	);
+/*export function LQHelper_execute(schema, document, payload, contextValue, variableValues, operationName, fieldResolver) {
+	let result = execute(schema, document, payload, contextValue, variableValues, operationName, fieldResolver);
 
 	const applyLiveQueryPatchGenerator = createApplyLiveQueryPatchGenerator();
 	if (result instanceof Promise) {
@@ -183,7 +151,7 @@ export function LQHelper_execute(
 	}
 
 	return applyLiveQueryPatchGenerator(result) as typeof result;
-}
+}*/
 
 /**
 * This function checks if the error is a GraphQLError. If it is, report it as

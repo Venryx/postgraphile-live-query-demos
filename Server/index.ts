@@ -3,7 +3,7 @@ const {program} = commander;
 import express from "express";
 import postgraphile_ from "postgraphile";
 const postgraphile = postgraphile_["postgraphile"] as typeof postgraphile_;
-import {LQHelper_Plugin, LQHelper_liveSubscribe, LQHelper_execute} from "./Utils/LQHelper";
+import {LQHelper_Plugin, LQHelper_liveSubscribe} from "./Utils/LQHelper";
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
@@ -38,7 +38,6 @@ app.use(
 			],
 			dynamicJson: true,
 			live: true,
-			executeFunc: LQHelper_execute,
 			subscribeFunc: LQHelper_liveSubscribe,
 			ownerConnectionString: dbURL, // passed in a 2nd time, for live-query module (connection-string with elevated privileges)
 			enableCors: true, // cors flag temporary; enables mutations, from any origin
