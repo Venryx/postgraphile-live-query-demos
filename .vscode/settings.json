@@ -1,4 +1,4 @@
 {
-	"autoHide.autoHideSideBar": false,
+	"autoHide.autoHideSideBar": true,
 	//"debug.javascript.unmapMissingSources": true
 }
