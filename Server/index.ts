@@ -3,7 +3,7 @@ const {program} = commander;
 import express from "express";
 import postgraphile_ from "postgraphile";
 const postgraphile = postgraphile_["postgraphile"] as typeof postgraphile_;
-import LQHelper from "./Utils/LQHelper";
+import {LQHelper_Plugin, LQHelper_liveSubscribe, LQHelper_execute} from "./Utils/LQHelper";
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
@@ -34,15 +34,17 @@ app.use(
 				require("@graphile-contrib/pg-simplify-inflector"),
 				require("@graphile/subscriptions-lds").default,
 				require("postgraphile-plugin-connection-filter"),
-				variant == "patches" && LQHelper,
+				variant == "patches" && LQHelper_Plugin,
 			],
 			dynamicJson: true,
 			live: true,
+			executeFunc: LQHelper_execute,
+			subscribeFunc: LQHelper_liveSubscribe,
 			ownerConnectionString: dbURL, // passed in a 2nd time, for live-query module (connection-string with elevated privileges)
 			enableCors: true, // cors flag temporary; enables mutations, from any origin
 			showErrorStack: true,
 			extendedErrors: ["hint", "detail", "errcode"], // to show error text in console (doesn't seem to be working)
-		}
+		} as any, // temp cast
 	)
 );
 

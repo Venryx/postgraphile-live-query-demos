@@ -37,15 +37,25 @@ const config = {
 		//external: require("module").builtinModules.concat(forProd ? ["react-vextensions", "react-vcomponents"] : []),
 		knownEntrypoints: [
 			// for packages that snowpack's auto-scanner misses // this seems to not work atm
-			"fast-json-patch",
+			//"fast-json-patch",
+			//"postgraphile/build/postgraphile/http/mapAsyncIterator".replace(/\//g, "\\"),
+			//"iterall",
 		],
-		external: builtinModules.concat("express", "postgraphile", "commander", "graphile-utils"),
+		external: builtinModules.concat(
+			"express", "postgraphile", "commander", "graphile-utils",
+			"graphql",
+			"@n1ru4l/graphql-live-query-patch",
+			"iterall",
+			"postgraphile/build/postgraphile/http/mapAsyncIterator",
+			"postgraphile/build/postgraphile/http/mapAsyncIterator.js"
+		),
 	},
 	devOptions: {
 		open: "none",
 	},
 	buildOptions: {
-		out: "Build/esm"
+		out: "Build/esm",
+		sourcemap: true,
 	},
 };
 export default config;

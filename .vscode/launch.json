@@ -6,15 +6,18 @@
 	"configurations": [
 		{
 			"type": "node",
+			//"type": "tsnode",
 			"request": "launch",
 			"name": "Debug-launch server.todo.patches",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
 			"program": "${workspaceFolder}/Server/Build/esm/index.js",
+			//"program": "${workspaceFolder}/Server/index.ts",
 			"args": ["--variant", "patches"],
 			"outFiles": [
 				"${workspaceFolder}/**/*.js"
+				//"${workspaceFolder}/Server/build/esm/**/*.js"
 			]
 		}
 	]
