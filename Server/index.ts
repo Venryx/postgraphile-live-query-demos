@@ -3,6 +3,7 @@ const {program} = commander;
 import express from "express";
 import postgraphile_ from "postgraphile";
 const postgraphile = postgraphile_["postgraphile"] as typeof postgraphile_;
+const {makePluginHook} = postgraphile_;
 import {LQHelper_Plugin, LQHelper_liveSubscribe} from "./Utils/LQHelper";
 
 import { createRequire } from 'module';
@@ -22,6 +23,10 @@ const app = express();
 const dbURL = process.env.DATABASE_URL || `postgres://${process.env.PGUSER}:${process.env.PGPASSWORD}@localhost:5432/lq-demos`;
 const dbPort = process.env.PORT || 2101 as number;
 
+const pluginHook = makePluginHook([
+	variant == "patches" && LQHelper_Plugin,
+]);
+
 app.use(
 	postgraphile(
 		dbURL,
@@ -30,15 +35,17 @@ app.use(
 			watchPg: true,
 			graphiql: true,
 			enhanceGraphiql: true,
+			// server/cli plugins
+			pluginHook,
+			// schema-builder plugins
 			appendPlugins: [
 				require("@graphile-contrib/pg-simplify-inflector"),
 				require("@graphile/subscriptions-lds").default,
 				require("postgraphile-plugin-connection-filter"),
-				//variant == "patches" && LQHelper_Plugin,
 			],
 			dynamicJson: true,
 			live: true,
-			subscribeFunc: variant == "patches" ? LQHelper_liveSubscribe : null,
+			//subscribeFunc: variant == "patches" ? LQHelper_liveSubscribe : null,
 			ownerConnectionString: dbURL, // passed in a 2nd time, for live-query module (connection-string with elevated privileges)
 			enableCors: true, // cors flag temporary; enables mutations, from any origin
 			showErrorStack: true,
