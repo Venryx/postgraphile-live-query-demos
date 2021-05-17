@@ -4,7 +4,7 @@ import express from "express";
 import postgraphile_ from "postgraphile";
 const postgraphile = postgraphile_["postgraphile"] as typeof postgraphile_;
 const {makePluginHook} = postgraphile_;
-import {LQHelper_Plugin, LQHelper_liveSubscribe} from "./Utils/LQHelper";
+import {LQHelper_Plugin} from "./Utils/LQHelper";
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
@@ -15,8 +15,6 @@ program
 program.parse(process.argv);
 export const launchOpts = program.opts();
 export const variant = launchOpts.variant;
-
-//if (launchOpts.variant == "base") {
 
 const app = express();
 
