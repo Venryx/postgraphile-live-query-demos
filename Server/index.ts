@@ -4,7 +4,7 @@ import express from "express";
 import postgraphile_ from "postgraphile";
 const postgraphile = postgraphile_["postgraphile"] as typeof postgraphile_;
 const {makePluginHook} = postgraphile_;
-import {LQHelper_Plugin} from "./Utils/LQHelper";
+import {GeneratePatchesPlugin} from "@pg-lq/postgraphile-plugin";
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
@@ -22,7 +22,7 @@ const dbURL = process.env.DATABASE_URL || `postgres://${process.env.PGUSER}:${pr
 const dbPort = process.env.PORT || 2101 as number;
 
 const pluginHook = makePluginHook([
-	variant == "patches" && LQHelper_Plugin,
+	variant == "patches" && GeneratePatchesPlugin,
 ]);
 
 app.use(
@@ -43,12 +43,11 @@ app.use(
 			],
 			dynamicJson: true,
 			live: true,
-			//subscribeFunc: variant == "patches" ? LQHelper_liveSubscribe : null,
 			ownerConnectionString: dbURL, // passed in a 2nd time, for live-query module (connection-string with elevated privileges)
 			enableCors: true, // cors flag temporary; enables mutations, from any origin
 			showErrorStack: true,
 			extendedErrors: ["hint", "detail", "errcode"], // to show error text in console (doesn't seem to be working)
-		} as any, // temp cast
+		},
 	)
 );
 
