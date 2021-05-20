@@ -55,10 +55,10 @@ Base
 
 With JSON patches
 
-> Uses the [graphql-live-query](https://github.com/n1ru4l/graphql-live-query) libraries (with a Postgraphile plugin around it) to send change-stream updates to the client.
+> Uses the [postgraphile-live-query](https://github.com/pg-lq/postgraphile-live-query) plugins (based on [graphql-live-query](https://github.com/n1ru4l/graphql-live-query)) to send change-stream updates to the client.
 >
 > **Pro:** Low overhead for change-feed updates, because only the delta for the result-set is sent each time.  
-> **Con:** Requires adding plugins to both the server and client code, for the deltas to be generated and applied.
+> **Con:** Requires adding a plugin to the server and client, for patch generation and application. (the instructions are [pretty simple though](https://github.com/pg-lq/postgraphile-live-query#integration-install--usage))
 
 ### Client variants
 
