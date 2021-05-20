@@ -77,4 +77,4 @@ Apollo + MobX Graphlink \[TODO\]
 Simple todo application, letting the user create, edit, reorder, and delete todo entries.
 
 **Server variants supported:** Base, JSON Patches  
-**Client variants supported:** Apollo, Apollo + MobX Graphlink
+**Client variants supported:** Apollo, Apollo + MobX Graphlink \[TODO\]
