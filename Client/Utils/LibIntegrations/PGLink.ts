@@ -4,6 +4,7 @@ import {WebSocketLink} from "@apollo/client/link/ws";
 import {getMainDefinition} from "@apollo/client/utilities";
 import {GetTypePolicyFieldsMappingSingleDocQueriesToCache} from "mobx-graphlink";
 import {ApplyPatchesLink} from "@pg-lq/apollo-plugin";
+import "fast-json-patch"; // temp-fix for snowpack issue
 
 const GRAPHQL_URL = "http://localhost:2101/graphql";
 
