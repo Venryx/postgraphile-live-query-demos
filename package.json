@@ -11,16 +11,20 @@
   "scripts": {
     "start": "nps"
   },
+  "@devDependencies_c": "The 'jsondiffpatch' entry is a temporary fix for this snowpack bug: https://github.com/snowpackjs/snowpack/issues/3405",
   "devDependencies": {
     "concurrently": "^6.1.0",
+    "jsondiffpatch": "^0.4.1",
     "nps": "^5.10.0",
-    "snowpack": "^3.4.0"
+    "snowpack": "^3.5.9"
   },
   "dependencies": {
     "@apollo/client": "^3.3.18",
     "@graphile-contrib/pg-simplify-inflector": "^6.1.0",
-    "@graphile/subscriptions-lds": "^4.11.0",
+    "@graphile/subscriptions-lds": "^4.12.1",
     "@n1ru4l/graphql-live-query-patch": "^0.3.1",
+    "@pg-lq/apollo-plugin": "^0.0.3",
+    "@pg-lq/postgraphile-plugin": "^0.0.4",
     "@types/node": "^15.3.0",
     "@types/react": "^17.0.5",
     "buffer": "^6.0.3",
@@ -28,9 +32,9 @@
     "express": "^4.17.1",
     "graphql": "^15.5.0",
     "mobx": "^6.3.0",
-    "mobx-graphlink": "0.0.1",
+    "mobx-graphlink": "0.0.4",
     "mobx-react": "^7.1.0",
-    "postgraphile": "^4.11.0",
+    "postgraphile": "^4.12.3",
     "postgraphile-plugin-connection-filter": "^2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

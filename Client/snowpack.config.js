@@ -27,6 +27,8 @@ module.exports = {
 	packageOptions: {
 		external: [
 			//"fast-json-patch"
+			//"jsondiffpatch",
+			//"@apollo/client",
 		].concat(forProd ? ['react-vextensions', 'react-vcomponents'] : [])
 	},
 	devOptions: {

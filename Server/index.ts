@@ -3,10 +3,11 @@ const {program} = commander;
 import express from "express";
 import postgraphile_ from "postgraphile";
 const postgraphile = postgraphile_["postgraphile"] as typeof postgraphile_;
-const {makePluginHook} = postgraphile_;
-import {GeneratePatchesPlugin} from "@pg-lq/postgraphile-plugin";
+const {makePluginHook} = postgraphile_ as any;
+import {CreateGeneratePatchFunc_FastJSONPatch, CreateGeneratePatchFunc_JSONDiffPatch, GeneratePatchesPlugin} from "@pg-lq/postgraphile-plugin";
 
 import { createRequire } from 'module';
+import {CreateApplyPatchFunc_JSONDiffPatch} from "@pg-lq/apollo-plugin";
 const require = createRequire(import.meta.url);
 
 program
@@ -22,7 +23,10 @@ const dbURL = process.env.DATABASE_URL || `postgres://${process.env.PGUSER}:${pr
 const dbPort = process.env.PORT || 2101 as number;
 
 const pluginHook = makePluginHook([
-	variant == "patches" && GeneratePatchesPlugin,
+	variant == "patches" && new GeneratePatchesPlugin({
+		//generatePatchFunc: CreateGeneratePatchFunc_FastJSONPatch(),
+		//generatePatchFunc: CreateGeneratePatchFunc_JSONDiffPatch(),
+	}),
 ]);
 
 app.use(
@@ -52,3 +56,4 @@ app.use(
 );
 
 app.listen(dbPort);
+console.log("Server started.");

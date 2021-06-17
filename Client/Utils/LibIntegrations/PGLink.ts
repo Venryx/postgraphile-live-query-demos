@@ -3,8 +3,9 @@ import {onError} from "@apollo/client/link/error";
 import {WebSocketLink} from "@apollo/client/link/ws";
 import {getMainDefinition} from "@apollo/client/utilities";
 import {GetTypePolicyFieldsMappingSingleDocQueriesToCache} from "mobx-graphlink";
-import {ApplyPatchesLink} from "@pg-lq/apollo-plugin";
+import {ApplyPatchesLink, CreateApplyPatchFunc_JSONDiffPatch} from "@pg-lq/apollo-plugin";
 import "fast-json-patch"; // temp-fix for snowpack issue
+import {CreateGeneratePatchFunc_FastJSONPatch} from "@pg-lq/postgraphile-plugin";
 
 const GRAPHQL_URL = "http://localhost:2101/graphql";
 
@@ -44,7 +45,11 @@ export function InitPGLink() {
 	]);
 	
 	pgClient = new ApolloClient({
-		link: new ApplyPatchesLink(link_withErrorHandling),
+		link: new ApplyPatchesLink({
+			baseLink: link_withErrorHandling,
+			//applyPatchFunc: CreateGeneratePatchFunc_FastJSONPatch(),
+			//applyPatchFunc: CreateApplyPatchFunc_JSONDiffPatch(),
+		}),
 		cache: new InMemoryCache({
 			typePolicies: {
 				Query: {

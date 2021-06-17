@@ -45,6 +45,8 @@ const config = {
 			"express", "postgraphile", "commander", "graphile-utils",
 			"graphql",
 			"@n1ru4l/graphql-live-query-patch",
+			//"fast-json-patch",
+			"jsondiffpatch",
 			"iterall",
 			"postgraphile/build/postgraphile/http/mapAsyncIterator",
 			"postgraphile/build/postgraphile/http/mapAsyncIterator.js"
